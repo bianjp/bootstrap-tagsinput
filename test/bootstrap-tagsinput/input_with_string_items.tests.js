@@ -20,7 +20,7 @@ describe("bootstrap-tagsinput", function() {
         this.$tagsinput_input.trigger($.Event('keypress', { which: 13 }));
         expect(this.$element.tagsinput('items').length).toBe(1);
       });
-	  
+
       it("should add tag on when pressing COMMA ,", function() {
         this.$tagsinput_input.val('some_tag');
         this.$tagsinput_input.trigger($.Event('keypress', { which: 44 }));
@@ -146,18 +146,18 @@ describe("bootstrap-tagsinput", function() {
         });
 
         it('after last tag, should remove the last tag', function() {
-          this.$tagsinput_input.trigger($.Event('keydown', { which: 8 }));
+          this.$tagsinput_input.trigger($.Event('keyup', { which: 8 }));
           expect(this.$element.tagsinput('items')[0]).toBe('some');
         });
 
         it('after last tag, should remove the last tag', function() {
-          this.$tagsinput_input.trigger($.Event('keydown', { which: 8 }));
+          this.$tagsinput_input.trigger($.Event('keyup', { which: 8 }));
           expect(this.$element.tagsinput('items').length).toBe(1);
         });
 
         it('after first tag, should remove the first tag', function() {
-          this.$tagsinput_input.trigger($.Event('keydown', { which: 37 }));
-          this.$tagsinput_input.trigger($.Event('keydown', { which: 8 }));
+          this.$tagsinput_input.trigger($.Event('keyup', { which: 37 }));
+          this.$tagsinput_input.trigger($.Event('keyup', { which: 8 }));
           expect(this.$element.tagsinput('items')[0]).toBe('tags');
         });
       });
@@ -166,22 +166,22 @@ describe("bootstrap-tagsinput", function() {
         beforeEach(function() {
           this.$element.tagsinput('focus');
           // move cursor before last tag
-          this.$tagsinput_input.trigger($.Event('keydown', { which: 37 }));
+          this.$tagsinput_input.trigger($.Event('keyup', { which: 37 }));
         });
 
         it('before last tag, should remove the last tag', function() {
-          this.$tagsinput_input.trigger($.Event('keydown', { which: 46 }));
+          this.$tagsinput_input.trigger($.Event('keyup', { which: 46 }));
           expect(this.$element.tagsinput('items')[0]).toBe('some');
         });
 
         it('before last tag, should remove the last tag', function() {
-          this.$tagsinput_input.trigger($.Event('keydown', { which: 46 }));
+          this.$tagsinput_input.trigger($.Event('keyup', { which: 46 }));
           expect(this.$element.tagsinput('items').length).toBe(1);
         });
 
         it('before first tag, should remove the first tag', function() {
-          this.$tagsinput_input.trigger($.Event('keydown', { which: 37 }));
-            this.$tagsinput_input.trigger($.Event('keydown', { which: 46 }));
+          this.$tagsinput_input.trigger($.Event('keyup', { which: 37 }));
+            this.$tagsinput_input.trigger($.Event('keyup', { which: 46 }));
           expect(this.$element.tagsinput('items')[0]).toBe('tags');
         });
       });
@@ -191,7 +191,7 @@ describe("bootstrap-tagsinput", function() {
       it("should have class 'bootstrap-tagsinput-max'", function() {
         expect(this.$tagsinput.hasClass('bootstrap-tagsinput-max')).toBe(true);
       });
-         
+
       describe("adding another tag", function() {
         it("should not add the tag", function() {
           this.$element.tagsinput('add', 'another');
@@ -214,5 +214,5 @@ describe("bootstrap-tagsinput", function() {
         expect(this.$element.tagsinput('items').length).toBe(1);
       });
     });
-  });  
+  });
 });
